@@ -21,7 +21,7 @@ employ_management=[]
 def add_employ():
     clear()
     
-    
+    employee_id = int(input("Enter The Employee ID:"))
     name=input("Enter The Name Of The Employee:")
     age=int(input("Enter The Age Of The Employee:"))
     position=input("Enter The Position Of The Employee:")
@@ -29,6 +29,7 @@ def add_employ():
     
     
     employee={
+        "employee_id":employee_id,
         "name":name,
         "age":age,
         "position":position
@@ -47,17 +48,17 @@ def add_employ():
 def display_employ():
     clear()
     for i in employ_management:
-            print("the product details are:")
-            print(f"employee_name:{i['name']}\n employee_age:{i['age']}\n employee_position:{i['position']}\n")
+            print("the employee details are:")
+            print(f"employee ID:{i['employee_id']}   \n employee name:{i['name']}\n employee age:{i['age']}\n employee position:{i['position']}\n")
             
     
       
 def remove_employ():
     clear() 
 
-    rememp=input("Enter The Name To Remove:")
+    rememp=int(input("Enter The ID To Remove:"))
     for i in employ_management:
-        if i['name'].lower()==rememp.lower():
+        if i['employee_id']==rememp:
             employ_management.remove(i)
             print("Employee Removed Successfully!")
         else:
@@ -71,9 +72,9 @@ def remove_employ():
 def search_employ():
     clear() 
 
-    searchkey=input("Enter The Name You Wanted To Searched:")
+    searchkey=int(input("Enter The ID You Wanted To Searched:"))
     for i in employ_management:
-        if i['name'].lower()==searchkey.lower():
+        if i['employee_id']==searchkey:
             print(f"employ found --\n name:{i['name']}\n age:{i['age']}\n position:{i['position']}\n")
 
         else:
@@ -103,11 +104,10 @@ def main():
         elif choice=="4":
             search_employ()
         elif choice=="5":
+            clear()
             print("Have A Nice Day!")
             break
         else:
-            clear() 
-
             print("Error Found,Enter Again:")
         
     
